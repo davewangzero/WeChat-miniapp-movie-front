@@ -1,0 +1,37 @@
+<view >
+  <view class="userinfo" style="position: absolute; left: 376rpx; top: 172rpx">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <text class="userinfo-nickname">Hi,{{userInfo.nickName}}</text>
+    <!--text>项目地址</text>
+    <text>https://github.com/zhonglimh/wechat-weapp-movie</text-->
+  </view>
+</view>
+<scroll-view style="position: relative; width: 100%; background: #FFF; left: 1rpx; top: 270rpx">
+  <view class="title">订单记录</view>
+  <view class="list-item" wx:for="{{orders}}" wx:key="oid">
+    <navigator class="list-info" url="../detail/detail?title=navigate&id={{item.id}}">
+      <view class="list-thumb">
+        <image class="thumb" src="{{item.img}}"></image>
+      </view>
+      <view class="list-content">
+        <view class="list-title">
+          <text>{{item.nm}}</text>
+          <icon class="i-type-3DIMAX" wx:if="{{item.imax && item['3d']}}"></icon>
+          <icon class="i-type-3D" wx:elif="{{item['3d']}}"></icon>
+        </view>
+        <view class="list-brief">票价：{{item.price}}元</view>
+        <view class="list-brief">购票时间：{{item.date}}</view>
+        <view class="list-brief"></view>
+        <view class="list-brief"></view>
+        <!--view class="list-brief">{{item.star}}</view-->
+      </view>
+    </navigator>
+    <view class="list-sale">
+      <text class="ui-btn ui-btn-red" bindtap="showCheckInfo" data-id="{{item.oid}}">
+        <block >核销码</block>
+      </text>
+    </view>
+  </view>
+</scroll-view>
+
+

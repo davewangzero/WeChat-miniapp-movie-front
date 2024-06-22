@@ -1,0 +1,35 @@
+{
+  "appid": "wxf57e48ec0a7b20d3",
+  "compileType": "miniprogram",
+  "libVersion": "3.4.7",
+  "packOptions": {
+    "ignore": [],
+    "include": [
+      {
+        "value": "JSONDB/list.json",
+        "type": "file"
+      }
+    ]
+  },
+  "setting": {
+    "coverView": true,
+    "es6": true,
+    "postcss": true,
+    "minified": true,
+    "enhance": true,
+    "showShadowRootInWxmlPanel": true,
+    "packNpmRelationList": [],
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "ignoreDevUnusedFiles": false,
+    "ignoreUploadUnusedFiles": false
+  },
+  "condition": {},
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  }
+}

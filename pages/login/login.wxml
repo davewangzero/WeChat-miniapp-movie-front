@@ -1,0 +1,12 @@
+<!-- login.wxml -->
+<view class="login-container">
+    <view class="input-group">
+        <input placeholder="请输入账号" bindinput="handleAccountInput" />
+    </view>
+    <view class="input-group">
+        <input type="password" placeholder="请输入密码" bindinput="handlePasswordInput" />
+    </view>
+    <view class="btn-group">
+        <button bindtap="login">登录</button>
+    </view>
+</view>
