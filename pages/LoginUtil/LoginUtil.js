@@ -29,8 +29,6 @@ Page({
           that.setData({
             userInfo: data
           })
-          //that.globalData.userInfo=wx.getStorageSync('userInfo')
-          //that.globalData.userInfo=res.data.userInfo
           console.log(that.data.userInfo)
           app.globalData.userInfo = that.data.userInfo
           eventChannel.emit("UserInfo", that.data.userInfo)

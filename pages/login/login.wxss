@@ -24,3 +24,20 @@ button {
   text-align: center;
   cursor: pointer;
 }
+/* login.wxss 或者全局样式文件中 */
+.btn-group {
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+}
+
+.btn-group button, .btn-group view {
+    margin: 0 10px; /* 按钮之间的间距 */
+}
+
+.btn-space {
+    width: 20px; /* 适当的宽度作为按钮之间的间隔 */
+}
+.input-space {
+  height: 20px;
+}

@@ -2,8 +2,7 @@
   <view class="userinfo" style="position: absolute; left: 376rpx; top: 172rpx">
     <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
     <text class="userinfo-nickname">Hi,{{userInfo.nickName}}</text>
-    <!--text>项目地址</text>
-    <text>https://github.com/zhonglimh/wechat-weapp-movie</text-->
+    
   </view>
 </view>
 <scroll-view style="position: relative; width: 100%; background: #FFF; left: 1rpx; top: 270rpx">

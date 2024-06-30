@@ -9,10 +9,10 @@ Page({
     var that = this
     if(that.data.userInfo){
       //console.log(that.data.userInfo)
-      var str = "../../JSONDB/order"+that.data.userInfo.id
-      var resData = require(str)
+      //var str = "../../JSONDB/order"+that.data.userInfo.id
+      var resData = require("../../JSONDB/orderlist")
       that.setData({
-        orders:resData.postData.orders
+        orders:resData.selectOrder(that.data.userInfo).orders
       })
     }else{
       wx.navigateTo({
@@ -25,9 +25,9 @@ Page({
             //console.log(that.data.userInfo)
             var str = "../../JSONDB/order"+that.data.userInfo.id
             //console.log(that.data.userInfo.id)
-            var resData = require(str)
+            var resData = require("../../JSONDB/orderlist")
             that.setData({
-              orders:resData.postData.orders
+              orders:resData.selectOrder(that.data.userInfo).orders
             })
           }
         },
@@ -45,12 +45,7 @@ Page({
     this.refreshData()
   },
   showCheckInfo: function(event) {
-    // 获取点击按钮的订单 ID
     let orderId = event.currentTarget.dataset.id;
-
-    // 调用生成二维码的方法，假设是一个自定义的函数 generateQRCode
-    // 生成二维码图片的函数，参数可以是订单 ID 或其他信息
-    // 弹出模态框显示二维码
     wx.showModal({
       title: '核销码',
       content: orderId,

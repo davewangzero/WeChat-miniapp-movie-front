@@ -3,10 +3,13 @@
     <view class="input-group">
         <input placeholder="请输入账号" bindinput="handleAccountInput" />
     </view>
+    <view class="input-space"></view>
     <view class="input-group">
         <input type="password" placeholder="请输入密码" bindinput="handlePasswordInput" />
     </view>
     <view class="btn-group">
         <button bindtap="login">登录</button>
+        <view class="btn-space"></view> <!-- 这里添加一个空白的 view 元素作为间隔 -->
+        <button bindtap="NewUser">注册</button> <!-- 注册按钮 -->
     </view>
 </view>

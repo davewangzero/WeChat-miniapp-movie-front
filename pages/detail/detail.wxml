@@ -54,12 +54,9 @@
     <text>{{item.content}}</text>
   </view>
 </view>
-<!-- 声明 -->
-<!--view class="movie-footer">
-  数据来源：猫眼电影（表示感谢）
-</view-->
+
 <!-- 购票 -->
-<view class="movie-buy">
+<view class="movie-buy" wx:if="{{!movieDetail.preSale}}">
   <text class="btn-buy" wx:if="{{ ticketInfo.num > 0 && userInfo}}" bindtap="buyTickets">立即购票</text>
   <text class="btn-buy" wx:if="{{ ticketInfo.num > 0 && !userInfo}}" bindtap="buyTickets">登录账户</text>
   <text class="btn-buy-disabled" wx:if="{{ ticketInfo.num <= 0 }}">立即购票</text>

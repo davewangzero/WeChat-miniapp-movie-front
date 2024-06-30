@@ -13,35 +13,20 @@ Page({
   },
   // 页面初始化
   onLoad: function (options) {
-    // options为页面跳转所带来的参数
+    
     var that = this
-    /*wx.request({
-      url: 'http://m.maoyan.com/movie/' + options.id + '.json',
-      success: function(res) {
-        that.setData({
-          movieDetail: res.data.data.MovieDetailModel,
-          movieComment:res.data.data.CommentResponseModel,
-          loading: true
-        })
-        var photos = that.data.movieDetail.photos;
-        for(var i=0; i<that.data.movieDetail.photos.length; i++){
-          photos[i] = photos[i].replace('/w.h/movie/','/movie/').replace('/w.h/mmdb/','/mmdb/').replace(/.jpg(.*)/,'.jpg@1sc%7C180w_140h_1e_1c.webp')
-        }
-        that.setData({
-          movieDesc: that.data.movieDetail.dra.replace(/<[^>]+>/g,''),
-          movieThumbs: photos
-        })
-      }
-    })*/
+    
     str = "../../JSONDB/movie"+options.id
-    resdata = require(str)
-    console.log(resdata)
+    resdata = require("../../JSONDB/movieList")
+    var moviedata = resdata.selectMovie(options.id)
+    console.log(moviedata)
+    //console.log(resdata)
     that.setData({
-      movieDetail: resdata.postData.movieDetailModel,
-      movieComment:resdata.postData.CommentResponseModel,
-      movieThumbs: resdata.postData.movieThumbs,
-      movieDesc: resdata.postData.movieDesc,
-      ticketInfo:resdata.postData.ticketInfo,
+      movieDetail: moviedata.movieDetailModel,
+      movieComment:moviedata.CommentResponseModel,
+      movieThumbs: moviedata.movieThumbs,
+      movieDesc: moviedata.movieDesc,
+      ticketInfo:moviedata.ticketInfo,
       loading: true
     })
     if(wx.getStorageSync('userInfo')){
@@ -97,12 +82,12 @@ Page({
                 num:currentnum
               }
             })
-            resdata.buyticket()
-            var order = require("../../JSONDB/order"+that.data.userInfo.id)
+            resdata.buyticket(that.data.movieDetail)
+            var order = require("../../JSONDB/orderlist")
             order.buyticket(that.data, new Date())
             that.onLoad({
               "title":"navigate",
-              "id":resdata.postData.movieDetailModel.id
+              "id":that.data.movieDetail.id
             });
           }
         }
@@ -123,34 +108,6 @@ Page({
         }
       })
     }
-    /*var app = getApp()
-    app.getUserInfo(function(userInfo){
-      //更新数据
-      that.setData({
-        userInfo:userInfo
-      })
-      success:{
-        wx.showModal({
-          title: '购票提示：',
-          content: '购票成功',
-          showCancel: false,
-          confirmColor: '#ff4d64'
-        })
-        var currentnum = that.data.ticket.num-1;
-        that.setData({
-          ticket:{
-            num:currentnum
-          }
-        })
-        resdata.buyticket()
-        var order = require("../../JSONDB/order"+that.data.userInfo.id)
-        order.buyticket(that.data)
-        that.onLoad({
-          "title":"navigate",
-          "id":resdata.postData.movieDetailModel.id
-        });
-      }
-    })*/
     
   }
 })
